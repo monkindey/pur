@@ -1,0 +1,14 @@
+{
+	"dependencies": {
+		"rollup-plugin-babel": "^2.7.1",
+		"rollup-plugin-commonjs": "^7.0.0",
+		"rollup-plugin-node-resolve": "^2.0.0",
+		"rollup-plugin-uglify": "^1.0.1"
+	},
+	"scripts": {
+		"build:cjs": "rollup -c --environment BUILD_ENV:cjs",
+		"dev": "nodemon -x 'yarn build:umd' --watch src",
+		"build:umd": "rollup -c --environment BUILD_ENV:umd",
+		"build:umd:min": "rollup -c --environment BUILD_ENV:umd,MIN"
+	}
+}

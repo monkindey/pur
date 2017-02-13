@@ -1,0 +1,41 @@
+<!DOCTYPE html >
+	<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hello React</title>
+</head>
+<body>
+	<div id="curry"></div>
+</body>
+<script src="../dist/pur.js"></script>
+<script>
+	class Curry extends pur.Component {
+		constructor(props) {
+			super(props);
+			this.state = {
+				btn: '测试'
+			}
+			setTimeout(() => {
+				this.setState({
+					btn: '测试2'
+				})
+			}, 5000);
+		}
+
+		render() {
+ 			var btn = this.state.btn;
+
+			return (
+				pur.createElement(
+					'div', {}, 
+					pur.createElement('span', {}, 'Stephen Curry is one of my favorite NBA player'),
+					pur.createElement('input', {}, ' '),
+					pur.createElement('button', {}, btn))
+			)
+		}
+	}
+	
+	// pur.render(pur.createElement(Curry), document.getElementById('curry'));
+	pur.render(pur.createElement(Curry), document.getElementById('curry'));
+</script>
+</html>
