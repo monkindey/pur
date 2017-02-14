@@ -4,12 +4,9 @@ export default class Component {
 	}
 
 	setState(partialState) {
-		// debugger;
 		this.state = partialState;
 		this._internalInstance.receiveComponent(this._internalInstance.currentElement);
 	}
 
-	isReactComponent() {
-
-	}
+	isReactComponent() {}
 }

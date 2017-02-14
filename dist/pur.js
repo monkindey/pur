@@ -95,9 +95,19 @@ class DOMComponent {
 		var element = this.currentElement;
 		var tag = element.type;
 		var children = element.props.children;
+		var props = element.props;
 
 		var node = document.createElement(tag);
 		this.node = node;
+
+		for (var p in props) {
+			if (p === 'children') {
+				continue;
+			}
+
+			node.setAttribute(p, props[p]);
+		}
+
 		var renderedChildren = this.renderedChildren = children.map(instantiateComponent);
 
 		renderedChildren.forEach(function (child) {
@@ -144,7 +154,6 @@ class CompositeComponent {
 		nextRenderedElement = publicInstance.render();
 
 		if (prevRenderedElement.type === nextRenderedElement.type) {
-			// debugger;
 			prevRenderedComponent.receiveComponent(nextRenderedElement);
 			return;
 		}
@@ -242,7 +251,6 @@ class Component {
 	}
 
 	setState(partialState) {
-		// debugger;
 		this.state = partialState;
 		this._internalInstance.receiveComponent(this._internalInstance.currentElement);
 	}
@@ -253,7 +261,7 @@ class Component {
 /**
  * @author monkindey
  * @date 2017.2.9
- * @description React Slim Version
+ * @description Pur
  * rollup tree shaking: import 不进来文件
  * rollup watch https://github.com/rollup/rollup/issues/284
  */
@@ -288,10 +296,10 @@ var Pur = {
 		var propName;
 		var props = {};
 
-		if (config != null) {
+		if (config !== null) {
 			for (propName in config) {
 				if (config.hasOwnProperty(propName)) {
-					props[name] = config[propName];
+					props[propName] = config[propName];
 				}
 			}
 		}

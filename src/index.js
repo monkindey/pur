@@ -1,7 +1,7 @@
 /**
  * @author monkindey
  * @date 2017.2.9
- * @description React Slim Version
+ * @description Pur
  * rollup tree shaking: import 不进来文件
  * rollup watch https://github.com/rollup/rollup/issues/284
  */
@@ -39,10 +39,10 @@ var Pur = {
 		var propName;
 		var props = {};
 
-		if (config != null) {
+		if (config !== null) {
 			for (propName in config) {
 				if (config.hasOwnProperty(propName)) {
-					props[name] = config[propName];
+					props[propName] = config[propName];
 				}
 			}
 		}

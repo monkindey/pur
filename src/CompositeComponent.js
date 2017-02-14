@@ -30,7 +30,6 @@ export default class CompositeComponent {
 		nextRenderedElement = publicInstance.render();
 
 		if (prevRenderedElement.type === nextRenderedElement.type) {
-			// debugger;
 			prevRenderedComponent.receiveComponent(nextRenderedElement);
 			return;
 		}

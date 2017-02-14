@@ -93,9 +93,19 @@ export default class DOMComponent {
 		var element = this.currentElement;
 		var tag = element.type;
 		var children = element.props.children;
+		var props = element.props;
 
 		var node = document.createElement(tag);
 		this.node = node;
+
+		for (var p in props) {
+			if (p === 'children') {
+				continue;
+			}
+
+			node.setAttribute(p, props[p]);
+		}
+
 		var renderedChildren = this.renderedChildren = children.map(instantiateComponent);
 
 		renderedChildren.forEach(function(child) {
